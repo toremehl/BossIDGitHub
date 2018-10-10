@@ -1,0 +1,763 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BossID.WebAPI.Vendor.REST</name>
+    </assembly>
+    <members>
+        <member name="M:BossID.WebAPI.Vendor.REST.Areas.HelpPage.ApiDescriptionExtensions.GetFriendlyId(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Generates an URI-friendly ID for the <see cref="T:System.Web.Http.Description.ApiDescription"/>. E.g. "Get-Values-id_name" instead of "GetValues/{id}?name={name}"
+            </summary>
+            <param name="description">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The ID as a string.</returns>
+        </member>
+        <member name="T:BossID.WebAPI.Vendor.REST.Areas.HelpPage.App_Start.HelpPageConfig">
+            <summary>
+            Use this class to customize the Help Page.
+            For example you can set a custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> to supply the documentation
+            or you can provide the samples for the requests/responses.
+            </summary>
+        </member>
+        <member name="T:BossID.WebAPI.Vendor.REST.Areas.HelpPage.Controllers.HelpController">
+            <summary>
+            The controller that will handle requests for the help page.
+            </summary>
+        </member>
+        <member name="M:BossID.WebAPI.Vendor.REST.Areas.HelpPage.HelpPageConfigurationExtensions.SetDocumentationProvider(System.Web.Http.HttpConfiguration,System.Web.Http.Description.IDocumentationProvider)">
+            <summary>
+            Sets the documentation provider for help page.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="documentationProvider">The documentation provider.</param>
+        </member>
+        <member name="M:BossID.WebAPI.Vendor.REST.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleObjects(System.Web.Http.HttpConfiguration,System.Collections.Generic.IDictionary{System.Type,System.Object})">
+            <summary>
+            Sets the objects that will be used by the formatters to produce sample requests/responses.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sampleObjects">The sample objects.</param>
+        </member>
+        <member name="M:BossID.WebAPI.Vendor.REST.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+            <summary>
+            Sets the sample request directly for the specified media type and action.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample request.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:BossID.WebAPI.Vendor.REST.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+            <summary>
+            Sets the sample request directly for the specified media type and action with parameters.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample request.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:BossID.WebAPI.Vendor.REST.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+            <summary>
+            Sets the sample request directly for the specified media type of the action.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample response.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:BossID.WebAPI.Vendor.REST.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+            <summary>
+            Sets the sample response directly for the specified media type of the action with specific parameters.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample response.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:BossID.WebAPI.Vendor.REST.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleForMediaType(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Sets the sample directly for all actions with the specified media type.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample.</param>
+            <param name="mediaType">The media type.</param>
+        </member>
+        <member name="M:BossID.WebAPI.Vendor.REST.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleForType(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+            Sets the sample directly for all actions with the specified type and media type.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="type">The parameter type or return type of an action.</param>
+        </member>
+        <member name="M:BossID.WebAPI.Vendor.REST.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate request samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:BossID.WebAPI.Vendor.REST.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate request samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:BossID.WebAPI.Vendor.REST.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate response samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:BossID.WebAPI.Vendor.REST.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate response samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:BossID.WebAPI.Vendor.REST.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Gets the help page sample generator.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <returns>The help page sample generator.</returns>
+        </member>
+        <member name="M:BossID.WebAPI.Vendor.REST.Areas.HelpPage.HelpPageConfigurationExtensions.SetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration,BossID.WebAPI.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator)">
+            <summary>
+            Sets the help page sample generator.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sampleGenerator">The help page sample generator.</param>
+        </member>
+        <member name="M:BossID.WebAPI.Vendor.REST.Areas.HelpPage.HelpPageConfigurationExtensions.GetModelDescriptionGenerator(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Gets the model description generator.
+            </summary>
+            <param name="config">The configuration.</param>
+            <returns>The <see cref="T:BossID.WebAPI.Vendor.REST.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator"/></returns>
+        </member>
+        <member name="M:BossID.WebAPI.Vendor.REST.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageApiModel(System.Web.Http.HttpConfiguration,System.String)">
+            <summary>
+            Gets the model that represents an API displayed on the help page. The model is initialized on the first call and cached for subsequent calls.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="apiDescriptionId">The <see cref="T:System.Web.Http.Description.ApiDescription"/> ID.</param>
+            <returns>
+            An <see cref="T:BossID.WebAPI.Vendor.REST.Areas.HelpPage.Models.HelpPageApiModel"/>
+            </returns>
+        </member>
+        <member name="T:BossID.WebAPI.Vendor.REST.Areas.HelpPage.ModelDescriptions.ModelDescription">
+            <summary>
+            Describes a type model.
+            </summary>
+        </member>
+        <member name="T:BossID.WebAPI.Vendor.REST.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator">
+            <summary>
+            Generates model descriptions for given types.
+            </summary>
+        </member>
+        <member name="T:BossID.WebAPI.Vendor.REST.Areas.HelpPage.ModelDescriptions.ModelNameAttribute">
+            <summary>
+            Use this attribute to change the name of the <see cref="T:BossID.WebAPI.Vendor.REST.Areas.HelpPage.ModelDescriptions.ModelDescription"/> generated for a type.
+            </summary>
+        </member>
+        <member name="T:BossID.WebAPI.Vendor.REST.Areas.HelpPage.Models.HelpPageApiModel">
+            <summary>
+            The model that represents an API displayed on the help page.
+            </summary>
+        </member>
+        <member name="M:BossID.WebAPI.Vendor.REST.Areas.HelpPage.Models.HelpPageApiModel.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BossID.WebAPI.Vendor.REST.Areas.HelpPage.Models.HelpPageApiModel"/> class.
+            </summary>
+        </member>
+        <member name="P:BossID.WebAPI.Vendor.REST.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription">
+            <summary>
+            Gets or sets the <see cref="P:BossID.WebAPI.Vendor.REST.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription"/> that describes the API.
+            </summary>
+        </member>
+        <member name="P:BossID.WebAPI.Vendor.REST.Areas.HelpPage.Models.HelpPageApiModel.UriParameters">
+            <summary>
+            Gets or sets the <see cref="T:BossID.WebAPI.Vendor.REST.Areas.HelpPage.ModelDescriptions.ParameterDescription"/> collection that describes the URI parameters for the API.
+            </summary>
+        </member>
+        <member name="P:BossID.WebAPI.Vendor.REST.Areas.HelpPage.Models.HelpPageApiModel.RequestDocumentation">
+            <summary>
+            Gets or sets the documentation for the request.
+            </summary>
+        </member>
+        <member name="P:BossID.WebAPI.Vendor.REST.Areas.HelpPage.Models.HelpPageApiModel.RequestModelDescription">
+            <summary>
+            Gets or sets the <see cref="T:BossID.WebAPI.Vendor.REST.Areas.HelpPage.ModelDescriptions.ModelDescription"/> that describes the request body.
+            </summary>
+        </member>
+        <member name="P:BossID.WebAPI.Vendor.REST.Areas.HelpPage.Models.HelpPageApiModel.RequestBodyParameters">
+            <summary>
+            Gets the request body parameter descriptions.
+            </summary>
+        </member>
+        <member name="P:BossID.WebAPI.Vendor.REST.Areas.HelpPage.Models.HelpPageApiModel.ResourceDescription">
+            <summary>
+            Gets or sets the <see cref="T:BossID.WebAPI.Vendor.REST.Areas.HelpPage.ModelDescriptions.ModelDescription"/> that describes the resource.
+            </summary>
+        </member>
+        <member name="P:BossID.WebAPI.Vendor.REST.Areas.HelpPage.Models.HelpPageApiModel.ResourceProperties">
+            <summary>
+            Gets the resource property descriptions.
+            </summary>
+        </member>
+        <member name="P:BossID.WebAPI.Vendor.REST.Areas.HelpPage.Models.HelpPageApiModel.SampleRequests">
+            <summary>
+            Gets the sample requests associated with the API.
+            </summary>
+        </member>
+        <member name="P:BossID.WebAPI.Vendor.REST.Areas.HelpPage.Models.HelpPageApiModel.SampleResponses">
+            <summary>
+            Gets the sample responses associated with the API.
+            </summary>
+        </member>
+        <member name="P:BossID.WebAPI.Vendor.REST.Areas.HelpPage.Models.HelpPageApiModel.ErrorMessages">
+            <summary>
+            Gets the error messages associated with this model.
+            </summary>
+        </member>
+        <member name="T:BossID.WebAPI.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator">
+            <summary>
+            This class will generate the samples for the help page.
+            </summary>
+        </member>
+        <member name="M:BossID.WebAPI.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BossID.WebAPI.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator"/> class.
+            </summary>
+        </member>
+        <member name="P:BossID.WebAPI.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.ActualHttpMessageTypes">
+            <summary>
+            Gets CLR types that are used as the content of <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/>.
+            </summary>
+        </member>
+        <member name="P:BossID.WebAPI.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.ActionSamples">
+            <summary>
+            Gets the objects that are used directly as samples for certain actions.
+            </summary>
+        </member>
+        <member name="P:BossID.WebAPI.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.SampleObjects">
+            <summary>
+            Gets the objects that are serialized as samples by the supported formatters.
+            </summary>
+        </member>
+        <member name="P:BossID.WebAPI.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.SampleObjectFactories">
+            <summary>
+            Gets factories for the objects that the supported formatters will serialize as samples. Processed in order,
+            stopping when the factory successfully returns a non-<see langref="null"/> object.
+            </summary>
+            <remarks>
+            Collection includes just <see cref="M:BossID.WebAPI.Vendor.REST.Areas.HelpPage.SampleGeneration.ObjectGenerator.GenerateObject(System.Type)"/> initially. Use
+            <code>SampleObjectFactories.Insert(0, func)</code> to provide an override and
+            <code>SampleObjectFactories.Add(func)</code> to provide a fallback.</remarks>
+        </member>
+        <member name="M:BossID.WebAPI.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.GetSampleRequests(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the request body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:BossID.WebAPI.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.GetSampleResponses(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the response body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:BossID.WebAPI.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.GetSample(System.Web.Http.Description.ApiDescription,BossID.WebAPI.Vendor.REST.Areas.HelpPage.SampleGeneration.SampleDirection)">
+            <summary>
+            Gets the request or response body samples.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:BossID.WebAPI.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.GetActionSample(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.Type,System.Net.Http.Formatting.MediaTypeFormatter,System.Net.Http.Headers.MediaTypeHeaderValue,BossID.WebAPI.Vendor.REST.Areas.HelpPage.SampleGeneration.SampleDirection)">
+            <summary>
+            Search for samples that are provided directly through <see cref="P:BossID.WebAPI.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.ActionSamples"/>.
+            </summary>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="type">The CLR type.</param>
+            <param name="formatter">The formatter.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The sample that matches the parameters.</returns>
+        </member>
+        <member name="M:BossID.WebAPI.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.GetSampleObject(System.Type)">
+            <summary>
+            Gets the sample object that will be serialized by the formatters. 
+            First, it will look at the <see cref="P:BossID.WebAPI.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.SampleObjects"/>. If no sample object is found, it will try to create
+            one using <see cref="M:BossID.WebAPI.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.DefaultSampleObjectFactory(BossID.WebAPI.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator,System.Type)"/> (which wraps an <see cref="T:BossID.WebAPI.Vendor.REST.Areas.HelpPage.SampleGeneration.ObjectGenerator"/>) and other
+            factories in <see cref="P:BossID.WebAPI.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.SampleObjectFactories"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>The sample object.</returns>
+        </member>
+        <member name="M:BossID.WebAPI.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.ResolveHttpRequestMessageType(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Resolves the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The type.</returns>
+        </member>
+        <member name="M:BossID.WebAPI.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.ResolveType(System.Web.Http.Description.ApiDescription,System.String,System.String,System.Collections.Generic.IEnumerable{System.String},BossID.WebAPI.Vendor.REST.Areas.HelpPage.SampleGeneration.SampleDirection,System.Collections.ObjectModel.Collection{System.Net.Http.Formatting.MediaTypeFormatter}@)">
+            <summary>
+            Resolves the type of the action parameter or return value when <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/> is used.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or a response.</param>
+            <param name="formatters">The formatters.</param>
+        </member>
+        <member name="M:BossID.WebAPI.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.WriteSampleObjectUsingFormatter(System.Net.Http.Formatting.MediaTypeFormatter,System.Object,System.Type,System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Writes the sample object using formatter.
+            </summary>
+            <param name="formatter">The formatter.</param>
+            <param name="value">The value.</param>
+            <param name="type">The type.</param>
+            <param name="mediaType">Type of the media.</param>
+            <returns></returns>
+        </member>
+        <member name="T:BossID.WebAPI.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleKey">
+            <summary>
+            This is used to identify the place where the sample should be applied.
+            </summary>
+        </member>
+        <member name="M:BossID.WebAPI.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Creates a new <see cref="T:BossID.WebAPI.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleKey"/> based on media type.
+            </summary>
+            <param name="mediaType">The media type.</param>
+        </member>
+        <member name="M:BossID.WebAPI.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+            Creates a new <see cref="T:BossID.WebAPI.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleKey"/> based on media type and CLR type.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="type">The CLR type.</param>
+        </member>
+        <member name="M:BossID.WebAPI.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.#ctor(BossID.WebAPI.Vendor.REST.Areas.HelpPage.SampleGeneration.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new <see cref="T:BossID.WebAPI.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleKey"/> based on <see cref="P:BossID.WebAPI.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="sampleDirection">The <see cref="P:BossID.WebAPI.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:BossID.WebAPI.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,BossID.WebAPI.Vendor.REST.Areas.HelpPage.SampleGeneration.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new <see cref="T:BossID.WebAPI.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleKey"/> based on media type, <see cref="P:BossID.WebAPI.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The <see cref="P:BossID.WebAPI.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="P:BossID.WebAPI.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.ControllerName">
+            <summary>
+            Gets the name of the controller.
+            </summary>
+            <value>
+            The name of the controller.
+            </value>
+        </member>
+        <member name="P:BossID.WebAPI.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.ActionName">
+            <summary>
+            Gets the name of the action.
+            </summary>
+            <value>
+            The name of the action.
+            </value>
+        </member>
+        <member name="P:BossID.WebAPI.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.MediaType">
+            <summary>
+            Gets the media type.
+            </summary>
+            <value>
+            The media type.
+            </value>
+        </member>
+        <member name="P:BossID.WebAPI.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.ParameterNames">
+            <summary>
+            Gets the parameter names.
+            </summary>
+        </member>
+        <member name="P:BossID.WebAPI.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.SampleDirection">
+            <summary>
+            Gets the <see cref="P:BossID.WebAPI.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.SampleDirection"/>.
+            </summary>
+        </member>
+        <member name="T:BossID.WebAPI.Vendor.REST.Areas.HelpPage.SampleGeneration.ImageSample">
+            <summary>
+            This represents an image sample on the help page. There's a display template named ImageSample associated with this class.
+            </summary>
+        </member>
+        <member name="M:BossID.WebAPI.Vendor.REST.Areas.HelpPage.SampleGeneration.ImageSample.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BossID.WebAPI.Vendor.REST.Areas.HelpPage.SampleGeneration.ImageSample"/> class.
+            </summary>
+            <param name="src">The URL of an image.</param>
+        </member>
+        <member name="T:BossID.WebAPI.Vendor.REST.Areas.HelpPage.SampleGeneration.InvalidSample">
+            <summary>
+            This represents an invalid sample on the help page. There's a display template named InvalidSample associated with this class.
+            </summary>
+        </member>
+        <member name="T:BossID.WebAPI.Vendor.REST.Areas.HelpPage.SampleGeneration.ObjectGenerator">
+            <summary>
+            This class will create an object of a given type and populate it with sample data.
+            </summary>
+        </member>
+        <member name="M:BossID.WebAPI.Vendor.REST.Areas.HelpPage.SampleGeneration.ObjectGenerator.GenerateObject(System.Type)">
+            <summary>
+            Generates an object for a given type. The type needs to be public, have a public default constructor and settable public properties/fields. Currently it supports the following types:
+            Simple types: <see cref="T:System.Int32"/>, <see cref="T:System.String"/>, <see cref="T:System.Enum"/>, <see cref="T:System.DateTime"/>, <see cref="T:System.Uri"/>, etc.
+            Complex types: POCO types.
+            Nullables: <see cref="T:System.Nullable`1"/>.
+            Arrays: arrays of simple types or complex types.
+            Key value pairs: <see cref="T:System.Collections.Generic.KeyValuePair`2"/>
+            Tuples: <see cref="T:System.Tuple`1"/>, <see cref="T:System.Tuple`2"/>, etc
+            Dictionaries: <see cref="T:System.Collections.Generic.IDictionary`2"/> or anything deriving from <see cref="T:System.Collections.Generic.IDictionary`2"/>.
+            Collections: <see cref="T:System.Collections.Generic.IList`1"/>, <see cref="T:System.Collections.Generic.IEnumerable`1"/>, <see cref="T:System.Collections.Generic.ICollection`1"/>, <see cref="T:System.Collections.IList"/>, <see cref="T:System.Collections.IEnumerable"/>, <see cref="T:System.Collections.ICollection"/> or anything deriving from <see cref="T:System.Collections.Generic.ICollection`1"/> or <see cref="T:System.Collections.IList"/>.
+            Queryables: <see cref="T:System.Linq.IQueryable"/>, <see cref="T:System.Linq.IQueryable`1"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>An object of the given type.</returns>
+        </member>
+        <member name="T:BossID.WebAPI.Vendor.REST.Areas.HelpPage.SampleGeneration.SampleDirection">
+            <summary>
+            Indicates whether the sample is used for request or response
+            </summary>
+        </member>
+        <member name="T:BossID.WebAPI.Vendor.REST.Areas.HelpPage.SampleGeneration.TextSample">
+            <summary>
+            This represents a preformatted text sample on the help page. There's a display template named TextSample associated with this class.
+            </summary>
+        </member>
+        <member name="T:BossID.WebAPI.Vendor.REST.Areas.HelpPage.XmlDocumentationProvider">
+            <summary>
+            A custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> that reads the API documentation from an XML documentation file.
+            </summary>
+        </member>
+        <member name="M:BossID.WebAPI.Vendor.REST.Areas.HelpPage.XmlDocumentationProvider.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BossID.WebAPI.Vendor.REST.Areas.HelpPage.XmlDocumentationProvider"/> class.
+            </summary>
+            <param name="documentPath">The physical path to XML document.</param>
+        </member>
+        <member name="T:BossID.WebAPI.Vendor.REST.Controllers.AccessPointController">
+            <summary>
+            Methods related to accesspoints
+            </summary>
+        </member>
+        <member name="M:BossID.WebAPI.Vendor.REST.Controllers.AccessPointController.AccessPoints(BossID.Common.Classes.AccessPointData)">
+            <summary>
+            Get accesspoints.
+            The method shall return information about one single access point or all access points in the vendor system.
+            </summary>
+            <param name="accessPoint"></param>
+            <returns>XML with access point information</returns>
+        </member>
+        <member name="M:BossID.WebAPI.Vendor.REST.Controllers.AccessPointController.AccessPointDetails(BossID.Common.Classes.AccessPointData)">
+            <summary>
+            The method shall return detailed information about one single access point or all access points in the vendor system.
+            </summary>
+            <param name="accessPoint"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BossID.WebAPI.Vendor.REST.Controllers.AccessPointController.AccessPointStatus(System.String)">
+            <summary>
+            The method shall return status information about all access points in the vendor system. 
+            The method is a “short form” of AccessPoint and shall return only status of each point.
+            The method will be invoked periodically, from a controlled environment, for displaying real-time access point status on a map.
+            </summary>
+            <param name="installationID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BossID.WebAPI.Vendor.REST.Controllers.AccessPointController.AccessPointOutOfOrder(BossID.Common.Classes.AccessPointOutOfOrder)">
+            <summary>
+            The customer call center at BIR reports that an access point is out of order. 
+            The intention of this method is to report to the vendor all discrepancies/anomalies regarding any access point
+            </summary>
+            <param name="accessPoint"></param>
+            <returns></returns>
+        </member>
+        <member name="T:BossID.WebAPI.Vendor.REST.Controllers.CardController">
+            <summary>
+            Methods related to cards
+            </summary>
+        </member>
+        <member name="M:BossID.WebAPI.Vendor.REST.Controllers.CardController.CardNew(BossID.Common.Classes.Card)">
+            <summary>
+            One or more new RFID cards are issued to a specific customer.
+            Operation: Add one or more new RFID card to a specific customer.
+            Result:    When the operation is complete, the customer may use all new cards on all access points assigned to the customer.
+            </summary>
+            <param name="newCard"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BossID.WebAPI.Vendor.REST.Controllers.CardController.CardReplace(BossID.Common.Classes.ReplacementCard)">
+            <summary>
+            The customer has misplaced or lost a card. A new card is issued and sent to the customer. The misplaced/lost card is removed from the customer.
+            Note: In BossID, the requirement is that no card shall ever be reused.Once a card is removed/deleted, the card is unavailable for future use by any customer.
+            Note: The vendor system must implement the necessary logic to keep the history of all deleted cards. 
+            That is, a card is not actually “deleted” but marked as deleted/removed and unusable.
+            
+            Operation: The card to be replaced is deactivated and removed from the customer. Adds the new card and binds it to the customer.
+            Result:    When the operation is complete, the customer may use the new card on all access points assigned to the customer 
+            </summary>
+            <param name="cards"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BossID.WebAPI.Vendor.REST.Controllers.CardController.CardActivate(BossID.Common.Classes.Card)">
+            <summary>
+            The method activates all specified cards or all cards for a specified customer
+            
+            Operation: Activates all specified card(s) for the specified customer. 
+            Result:    The customer may use all activated card(s) for all assigned access points.
+            </summary>
+            <param name="card"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BossID.WebAPI.Vendor.REST.Controllers.CardController.CardDeactivate(BossID.Common.Classes.Card)">
+            <summary>
+            The method shall deactivate all specified RFID cards for the specified customer.
+            
+            Operation: Deactivates all specified cards for the specified customer
+            Result:    The customer cannot use any of these deactivated cards on any assigned access point.
+            </summary>
+            <param name="card"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BossID.WebAPI.Vendor.REST.Controllers.CardController.CardDelete(BossID.Common.Classes.Card)">
+            <summary>
+            The specified card(s) shall be deleted and removed from the specified customer. 
+            Note: In BossID, the requirement is that no card shall ever be reused.Once a card is removed/deleted the card is unavailable for future use by any customer.
+            Note: The vendor system must implement the necessary logic to keep the history of all deleted cards.
+            That is, a card is not actually “deleted” but marked as deleted/removed and unusable.
+            
+            Operation: Deactivate and delete the specified card(s) for the specified customer.
+            Result:    When the operation has completed, no one shall ever be able to use the specified card(s) on any access point ever.
+            </summary>
+            <param name="card"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BossID.WebAPI.Vendor.REST.Controllers.CardController.CardList(BossID.Common.Classes.Client)">
+            <summary>
+            The method shall return all cards bound to a specific customer. The list shall include all active and deactivated cards.
+            In addition, the list shall include all cards that have been removed/deleted from the customer.
+            
+            Operation: Retrieve all cards for the specified customer, activated, deactivated and deleted.
+            Result:    List of cards bound to the customer.
+            </summary>
+            <param name="client"></param>
+            <returns></returns>
+        </member>
+        <member name="T:BossID.WebAPI.Vendor.REST.Controllers.ClientController">
+            <summary>
+            Methods related to clients
+            </summary>
+        </member>
+        <member name="M:BossID.WebAPI.Vendor.REST.Controllers.ClientController.CustomerNewHousehold(BossID.Common.Classes.HouseHoldClient)">
+            <summary>
+            New household customer are added to the vendor system using the CustomerNewHousehold method, including one or more RFID cards.
+            The service will be used for all new properties/households identified with a property unit number.
+            Note: Household customers does not have a “Name” in BossID since the customer is a property
+            unit.If the vendor is in need to have a name for the customer, the property unit should be used.
+            
+            Operation: Add the customer to the vendor system
+                       Bind the RFID-card(s) to the customer
+                       Bind/allocate access points to the customer
+            
+            Result:    When the operation is successful, the customer will be able to use the given card(s) on all allocated access points.
+            </summary>
+            <param name="client"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BossID.WebAPI.Vendor.REST.Controllers.ClientController.CustomerNewCommercial(BossID.Common.Classes.CommercialClient)">
+            <summary>
+            CustomerNewCommercial shall be used to add a new commercial customer to the vendor system, including one or more RFID cards.
+            
+            Operation: Add the customer to the vendor system
+                       Bind the RFID-card(s) to the customer
+                       Bind/allocate access points to the customer
+            
+            Result:    When the operation is successful, the customer will be able to use the given card(s) on all allocated access points.
+            </summary>
+            <param name="client"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BossID.WebAPI.Vendor.REST.Controllers.ClientController.CustomerMove(BossID.Common.Classes.CurrentClient)">
+            <summary>
+            Occasionally, there may be a change in cadastral unit, access point structure, etc., where it is 
+            necessary to change the properties of a customer but preserving the card associated with the customer.
+            
+            Typically:
+            * The customer cadastral unit has been split into two or more condominium units and the customer is associated with one of them.
+            * The municipality has decided to change the street address
+            * An access point change according to section 6.10 
+            * A commercial customer has moved from one location to another but is still inside the area served by the vendor.
+            
+            Note: A customer cannot be moved from one installation ID to another
+            </summary>
+            <param name="client"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BossID.WebAPI.Vendor.REST.Controllers.ClientController.CustomerDeactivate(BossID.Common.Classes.CurrentClient)">
+            <summary>
+            The service will deactivate all cards belonging to the specified customer.
+            
+            Operation: Deactivates all cards for the specified customer.
+            Result:    The customer cannot use the bound cards at any access point.
+            </summary>
+            <param name="client"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BossID.WebAPI.Vendor.REST.Controllers.ClientController.CustomerActivate(BossID.Common.Classes.CurrentClient)">
+            <summary>
+            The service activates all card bound to a specific customer. 
+            
+            Operation: Activates all cards for a customer.
+            Result:    When the operation is complete, the customer may use all cards for all assigned access points.
+            </summary>
+            <param name="client"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BossID.WebAPI.Vendor.REST.Controllers.ClientController.CustomerDelete(BossID.Common.Classes.CurrentClient)">
+            <summary>
+            The service “deletes” the specified customer and all bound cards. 
+            
+            Note: With delete means that both the customer and all the bound cards are marked as deleted.
+            The vendor system must implement such deletion mechanism to preserve both customer, card and event history.
+            
+            Note: In BossID, the requirement is that no card shall ever be reused. Once a card is removed/deleted the card is unavailable for future use by any customer.
+            
+            Note: For household customers, this method will be used when e.g. an existing property is split into two or more separate sections. 
+            
+            Operation Deletes all cards for a specific customer 
+            Deactivates all access points for a specific customer 
+            Deletes all other customer information.
+            
+            Result: When the operation has completed, no one shall ever be able to use the cards on any access point ever.
+            </summary>
+            <param name="client"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BossID.WebAPI.Vendor.REST.Controllers.ClientController.CustomerAccessPoints(BossID.Common.Classes.CurrentClient)">
+            <summary>
+            The method shall return information and status of all access points allocated to a specific client.
+            </summary>
+            <param name="client"></param>
+            <returns>Client accesspoints</returns>
+        </member>
+        <member name="M:BossID.WebAPI.Vendor.REST.Controllers.ClientController.CustomerEvents(BIR.BossID.Core.Models.Events)">
+            <summary>
+            The method will be used to collect access point events for a specific customer or all customers for a specific period in time.
+            
+            Note: For a single customer query with no dates specified, the method should return the last 20-100 real-time events.
+            This method will be used, on demand by BIR call center, to collect the latest access point events for a specific customer.
+            
+            Note: “All customers” option will only be used nightly to collect daily activity data.
+            Note: “All customers” option shall return a compressed XML as defined in section 7.4.7.3.
+            Note: A customer event is a successful operation, e.g. a successful waste disposal.
+            The method shall have three options:
+            * The last 25 events in real-time. Both FromDate and ToDate are empty.
+            * All events from a specific date for one customer
+            * All events from and including date to and including date for one customer or all
+            
+            Operation: Collect access point events for a customer or all events for all customers for a specific period in time.
+            
+            Result:    XML with event information
+            
+            </summary>
+            <param name="events"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BossID.WebAPI.Vendor.REST.Controllers.ClientController.ExtendedEvents(BIR.BossID.Core.Models.Events)">
+            <summary>
+            The method will be used to collect extended events for a specific installation for a specific period in time
+            
+            Operation: Collect extended events for a specific installation for a specific period in time.
+            
+            Result:    XML with event information
+            </summary>
+            <param name="events"></param>
+            <returns></returns>
+        </member>
+        <member name="T:BossID.WebAPI.Vendor.REST.Controllers.EventsController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:BossID.WebAPI.Vendor.REST.Controllers.EventsController.CustomerEvents(BIR.BossID.Core.Models.Events)">
+            <summary>
+            The method will be used to collect access point events for a specific customer or all customers for a specific period in time.
+            
+            Note: For a single customer query with no dates specified, the method should return the last 20-100 real-time events.
+            This method will be used, on demand by BIR call center, to collect the latest access point events for a specific customer.
+            
+            Note: “All customers” option will only be used nightly to collect daily activity data.
+            Note: “All customers” option shall return a compressed XML as defined in section 7.4.7.3.
+            Note: A customer event is a successful operation, e.g. a successful waste disposal.
+            The method shall have three options:
+            * The last 25 events in real-time. Both FromDate and ToDate are empty.
+            * All events from a specific date for one customer
+            * All events from and including date to and including date for one customer or all
+            
+            Operation: Collect access point events for a customer or all events for all customers for a specific period in time.
+            
+            Result:    XML with event information
+            
+            </summary>
+            <param name="events"></param>
+            <returns>XML with event information</returns>
+        </member>
+        <member name="M:BossID.WebAPI.Vendor.REST.Controllers.EventsController.ExtendedEvents(BIR.BossID.Core.Models.Events)">
+            <summary>
+            The method will be used to collect extended events for a specific installation for a specific period in time
+            
+            Operation: Collect extended events for a specific installation for a specific period in time.
+            
+            Result:    XML with event information
+            </summary>
+            <param name="events"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

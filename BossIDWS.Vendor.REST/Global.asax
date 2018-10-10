@@ -1,0 +1,1 @@
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="BossIDWS.Vendor.REST.WebApiApplication" Language="C#" %>

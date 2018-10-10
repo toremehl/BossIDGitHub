@@ -1,0 +1,2460 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BossIDWS.Vendor.REST</name>
+    </assembly>
+    <members>
+        <member name="M:BossIDWS.Vendor.REST.Areas.HelpPage.ApiDescriptionExtensions.GetFriendlyId(System.Web.Http.Description.ApiDescription)">
+            <summary>
+                Generates an URI-friendly ID for the <see cref="T:System.Web.Http.Description.ApiDescription" />. E.g. "Get-Values-id_name" instead of
+                "GetValues/{id}?name={name}"
+            </summary>
+            <param name="description">The <see cref="T:System.Web.Http.Description.ApiDescription" />.</param>
+            <returns>The ID as a string.</returns>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.Areas.HelpPage.App_Start.HelpPageConfig">
+            <summary>
+                Use this class to customize the Help Page.
+                For example you can set a custom <see cref="T:System.Web.Http.Description.IDocumentationProvider" /> to supply the
+                documentation
+                or you can provide the samples for the requests/responses.
+            </summary>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.Areas.HelpPage.Controllers.HelpController">
+            <summary>
+                The controller that will handle requests for the help page.
+            </summary>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Areas.HelpPage.HelpPageConfigurationExtensions.SetDocumentationProvider(System.Web.Http.HttpConfiguration,System.Web.Http.Description.IDocumentationProvider)">
+            <summary>
+                Sets the documentation provider for help page.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration" />.</param>
+            <param name="documentationProvider">The documentation provider.</param>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleObjects(System.Web.Http.HttpConfiguration,System.Collections.Generic.IDictionary{System.Type,System.Object})">
+            <summary>
+                Sets the objects that will be used by the formatters to produce sample requests/responses.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration" />.</param>
+            <param name="sampleObjects">The sample objects.</param>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+            <summary>
+                Sets the sample request directly for the specified media type and action.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration" />.</param>
+            <param name="sample">The sample request.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+            <summary>
+                Sets the sample request directly for the specified media type and action with parameters.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration" />.</param>
+            <param name="sample">The sample request.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+            <summary>
+                Sets the sample request directly for the specified media type of the action.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration" />.</param>
+            <param name="sample">The sample response.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+            <summary>
+                Sets the sample response directly for the specified media type of the action with specific parameters.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration" />.</param>
+            <param name="sample">The sample response.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleForMediaType(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+                Sets the sample directly for all actions with the specified media type.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration" />.</param>
+            <param name="sample">The sample.</param>
+            <param name="mediaType">The media type.</param>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleForType(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+                Sets the sample directly for all actions with the specified type and media type.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration" />.</param>
+            <param name="sample">The sample.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="type">The parameter type or return type of an action.</param>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+            <summary>
+                Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1" /> passed to the
+                <see cref="T:System.Net.Http.HttpRequestMessage" /> in an action.
+                The help page will use this information to produce more accurate request samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration" />.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+            <summary>
+                Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1" /> passed to the
+                <see cref="T:System.Net.Http.HttpRequestMessage" /> in an action.
+                The help page will use this information to produce more accurate request samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration" />.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+            <summary>
+                Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1" /> returned as part of the
+                <see cref="T:System.Net.Http.HttpRequestMessage" /> in an action.
+                The help page will use this information to produce more accurate response samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration" />.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+            <summary>
+                Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1" /> returned as part of the
+                <see cref="T:System.Net.Http.HttpRequestMessage" /> in an action.
+                The help page will use this information to produce more accurate response samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration" />.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration)">
+            <summary>
+                Gets the help page sample generator.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration" />.</param>
+            <returns>The help page sample generator.</returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Areas.HelpPage.HelpPageConfigurationExtensions.SetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration,BossIDWS.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator)">
+            <summary>
+                Sets the help page sample generator.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration" />.</param>
+            <param name="sampleGenerator">The help page sample generator.</param>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Areas.HelpPage.HelpPageConfigurationExtensions.GetModelDescriptionGenerator(System.Web.Http.HttpConfiguration)">
+            <summary>
+                Gets the model description generator.
+            </summary>
+            <param name="config">The configuration.</param>
+            <returns>The <see cref="T:BossIDWS.Vendor.REST.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator" /></returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageApiModel(System.Web.Http.HttpConfiguration,System.String)">
+            <summary>
+                Gets the model that represents an API displayed on the help page. The model is initialized on the first call and
+                cached for subsequent calls.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration" />.</param>
+            <param name="apiDescriptionId">The <see cref="T:System.Web.Http.Description.ApiDescription" /> ID.</param>
+            <returns>
+                An <see cref="T:BossIDWS.Vendor.REST.Areas.HelpPage.Models.HelpPageApiModel" />
+            </returns>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.Areas.HelpPage.ModelDescriptions.ModelDescription">
+            <summary>
+                Describes a type model.
+            </summary>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator">
+            <summary>
+                Generates model descriptions for given types.
+            </summary>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.Areas.HelpPage.ModelDescriptions.ModelNameAttribute">
+            <summary>
+                Use this attribute to change the name of the <see cref="T:BossIDWS.Vendor.REST.Areas.HelpPage.ModelDescriptions.ModelDescription" /> generated for a type.
+            </summary>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.Areas.HelpPage.Models.HelpPageApiModel">
+            <summary>
+                The model that represents an API displayed on the help page.
+            </summary>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Areas.HelpPage.Models.HelpPageApiModel.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:BossIDWS.Vendor.REST.Areas.HelpPage.Models.HelpPageApiModel" /> class.
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription">
+            <summary>
+                Gets or sets the <see cref="P:BossIDWS.Vendor.REST.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription" /> that describes the API.
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.Areas.HelpPage.Models.HelpPageApiModel.UriParameters">
+            <summary>
+                Gets or sets the <see cref="T:BossIDWS.Vendor.REST.Areas.HelpPage.ModelDescriptions.ParameterDescription" /> collection that describes the URI parameters for the API.
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.Areas.HelpPage.Models.HelpPageApiModel.RequestDocumentation">
+            <summary>
+                Gets or sets the documentation for the request.
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.Areas.HelpPage.Models.HelpPageApiModel.RequestModelDescription">
+            <summary>
+                Gets or sets the <see cref="T:BossIDWS.Vendor.REST.Areas.HelpPage.ModelDescriptions.ModelDescription" /> that describes the request body.
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.Areas.HelpPage.Models.HelpPageApiModel.RequestBodyParameters">
+            <summary>
+                Gets the request body parameter descriptions.
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.Areas.HelpPage.Models.HelpPageApiModel.ResourceDescription">
+            <summary>
+                Gets or sets the <see cref="T:BossIDWS.Vendor.REST.Areas.HelpPage.ModelDescriptions.ModelDescription" /> that describes the resource.
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.Areas.HelpPage.Models.HelpPageApiModel.ResourceProperties">
+            <summary>
+                Gets the resource property descriptions.
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.Areas.HelpPage.Models.HelpPageApiModel.SampleRequests">
+            <summary>
+                Gets the sample requests associated with the API.
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.Areas.HelpPage.Models.HelpPageApiModel.SampleResponses">
+            <summary>
+                Gets the sample responses associated with the API.
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.Areas.HelpPage.Models.HelpPageApiModel.ErrorMessages">
+            <summary>
+                Gets the error messages associated with this model.
+            </summary>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator">
+            <summary>
+                This class will generate the samples for the help page.
+            </summary>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:BossIDWS.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator" /> class.
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.ActualHttpMessageTypes">
+            <summary>
+                Gets CLR types that are used as the content of <see cref="T:System.Net.Http.HttpRequestMessage" /> or
+                <see cref="T:System.Net.Http.HttpResponseMessage" />.
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.ActionSamples">
+            <summary>
+                Gets the objects that are used directly as samples for certain actions.
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.SampleObjects">
+            <summary>
+                Gets the objects that are serialized as samples by the supported formatters.
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.SampleObjectFactories">
+            <summary>
+                Gets factories for the objects that the supported formatters will serialize as samples. Processed in order,
+                stopping when the factory successfully returns a non-<see langref="null" /> object.
+            </summary>
+            <remarks>
+                Collection includes just <see cref="M:BossIDWS.Vendor.REST.Areas.HelpPage.SampleGeneration.ObjectGenerator.GenerateObject(System.Type)" /> initially. Use
+                <code>SampleObjectFactories.Insert(0, func)</code> to provide an override and
+                <code>SampleObjectFactories.Add(func)</code> to provide a fallback.
+            </remarks>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.GetSampleRequests(System.Web.Http.Description.ApiDescription)">
+            <summary>
+                Gets the request body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription" />.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription" />.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.GetSampleResponses(System.Web.Http.Description.ApiDescription)">
+            <summary>
+                Gets the response body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription" />.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription" />.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.GetSample(System.Web.Http.Description.ApiDescription,BossIDWS.Vendor.REST.Areas.HelpPage.SampleGeneration.SampleDirection)">
+            <summary>
+                Gets the request or response body samples.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription" />.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.GetActionSample(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.Type,System.Net.Http.Formatting.MediaTypeFormatter,System.Net.Http.Headers.MediaTypeHeaderValue,BossIDWS.Vendor.REST.Areas.HelpPage.SampleGeneration.SampleDirection)">
+            <summary>
+                Search for samples that are provided directly through <see cref="P:BossIDWS.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.ActionSamples" />.
+            </summary>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="type">The CLR type.</param>
+            <param name="formatter">The formatter.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The sample that matches the parameters.</returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.GetSampleObject(System.Type)">
+            <summary>
+                Gets the sample object that will be serialized by the formatters.
+                First, it will look at the <see cref="P:BossIDWS.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.SampleObjects" />. If no sample object is found, it will try to create
+                one using <see cref="M:BossIDWS.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.DefaultSampleObjectFactory(BossIDWS.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator,System.Type)" /> (which wraps an <see cref="T:BossIDWS.Vendor.REST.Areas.HelpPage.SampleGeneration.ObjectGenerator" />) and other
+                factories in <see cref="P:BossIDWS.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.SampleObjectFactories" />.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>The sample object.</returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.ResolveHttpRequestMessageType(System.Web.Http.Description.ApiDescription)">
+            <summary>
+                Resolves the actual type of <see cref="T:System.Net.Http.ObjectContent`1" /> passed to the
+                <see cref="T:System.Net.Http.HttpRequestMessage" /> in an action.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription" />.</param>
+            <returns>The type.</returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.ResolveType(System.Web.Http.Description.ApiDescription,System.String,System.String,System.Collections.Generic.IEnumerable{System.String},BossIDWS.Vendor.REST.Areas.HelpPage.SampleGeneration.SampleDirection,System.Collections.ObjectModel.Collection{System.Net.Http.Formatting.MediaTypeFormatter}@)">
+            <summary>
+                Resolves the type of the action parameter or return value when <see cref="T:System.Net.Http.HttpRequestMessage" /> or
+                <see cref="T:System.Net.Http.HttpResponseMessage" /> is used.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription" />.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or a response.</param>
+            <param name="formatters">The formatters.</param>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.WriteSampleObjectUsingFormatter(System.Net.Http.Formatting.MediaTypeFormatter,System.Object,System.Type,System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+                Writes the sample object using formatter.
+            </summary>
+            <param name="formatter">The formatter.</param>
+            <param name="value">The value.</param>
+            <param name="type">The type.</param>
+            <param name="mediaType">Type of the media.</param>
+            <returns></returns>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleKey">
+            <summary>
+                This is used to identify the place where the sample should be applied.
+            </summary>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+                Creates a new <see cref="T:BossIDWS.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleKey" /> based on media type.
+            </summary>
+            <param name="mediaType">The media type.</param>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+                Creates a new <see cref="T:BossIDWS.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleKey" /> based on media type and CLR type.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="type">The CLR type.</param>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.#ctor(BossIDWS.Vendor.REST.Areas.HelpPage.SampleGeneration.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+                Creates a new <see cref="T:BossIDWS.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleKey" /> based on <see cref="P:BossIDWS.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.SampleDirection" />, controller name, action
+                name and parameter names.
+            </summary>
+            <param name="sampleDirection">The <see cref="P:BossIDWS.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.SampleDirection" />.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,BossIDWS.Vendor.REST.Areas.HelpPage.SampleGeneration.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+                Creates a new <see cref="T:BossIDWS.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleKey" /> based on media type, <see cref="P:BossIDWS.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.SampleDirection" />, controller
+                name, action name and parameter names.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The <see cref="P:BossIDWS.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.SampleDirection" />.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.ControllerName">
+            <summary>
+                Gets the name of the controller.
+            </summary>
+            <value>
+                The name of the controller.
+            </value>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.ActionName">
+            <summary>
+                Gets the name of the action.
+            </summary>
+            <value>
+                The name of the action.
+            </value>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.MediaType">
+            <summary>
+                Gets the media type.
+            </summary>
+            <value>
+                The media type.
+            </value>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.ParameterNames">
+            <summary>
+                Gets the parameter names.
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.SampleDirection">
+            <summary>
+                Gets the <see cref="P:BossIDWS.Vendor.REST.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.SampleDirection" />.
+            </summary>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.Areas.HelpPage.SampleGeneration.ImageSample">
+            <summary>
+                This represents an image sample on the help page. There's a display template named ImageSample associated with this
+                class.
+            </summary>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Areas.HelpPage.SampleGeneration.ImageSample.#ctor(System.String)">
+            <summary>
+                Initializes a new instance of the <see cref="T:BossIDWS.Vendor.REST.Areas.HelpPage.SampleGeneration.ImageSample" /> class.
+            </summary>
+            <param name="src">The URL of an image.</param>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.Areas.HelpPage.SampleGeneration.InvalidSample">
+            <summary>
+                This represents an invalid sample on the help page. There's a display template named InvalidSample associated with
+                this class.
+            </summary>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.Areas.HelpPage.SampleGeneration.ObjectGenerator">
+            <summary>
+                This class will create an object of a given type and populate it with sample data.
+            </summary>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Areas.HelpPage.SampleGeneration.ObjectGenerator.GenerateObject(System.Type)">
+            <summary>
+                Generates an object for a given type. The type needs to be public, have a public default constructor and settable
+                public properties/fields. Currently it supports the following types:
+                Simple types: <see cref="T:System.Int32" />, <see cref="T:System.String" />, <see cref="T:System.Enum" />, <see cref="T:System.DateTime" />,
+                <see cref="T:System.Uri" />, etc.
+                Complex types: POCO types.
+                Nullables: <see cref="T:System.Nullable`1" />.
+                Arrays: arrays of simple types or complex types.
+                Key value pairs: <see cref="T:System.Collections.Generic.KeyValuePair`2" />
+                Tuples: <see cref="T:System.Tuple`1" />, <see cref="T:System.Tuple`2" />, etc
+                Dictionaries: <see cref="T:System.Collections.Generic.IDictionary`2" /> or anything deriving from
+                <see cref="T:System.Collections.Generic.IDictionary`2" />.
+                Collections: <see cref="T:System.Collections.Generic.IList`1" />, <see cref="T:System.Collections.Generic.IEnumerable`1" />, <see cref="T:System.Collections.Generic.ICollection`1" />,
+                <see cref="T:System.Collections.IList" />, <see cref="T:System.Collections.IEnumerable" />, <see cref="T:System.Collections.ICollection" /> or anything deriving from
+                <see cref="T:System.Collections.Generic.ICollection`1" /> or <see cref="T:System.Collections.IList" />.
+                Queryables: <see cref="T:System.Linq.IQueryable" />, <see cref="T:System.Linq.IQueryable`1" />.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>An object of the given type.</returns>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.Areas.HelpPage.SampleGeneration.SampleDirection">
+            <summary>
+                Indicates whether the sample is used for request or response
+            </summary>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.Areas.HelpPage.SampleGeneration.TextSample">
+            <summary>
+                This represents a preformatted text sample on the help page. There's a display template named TextSample associated
+                with this class.
+            </summary>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.Areas.HelpPage.XmlDocumentationProvider">
+            <summary>
+                A custom <see cref="T:System.Web.Http.Description.IDocumentationProvider" /> that reads the API documentation from an XML documentation file.
+            </summary>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Areas.HelpPage.XmlDocumentationProvider.#ctor(System.String)">
+            <summary>
+                Initializes a new instance of the <see cref="T:BossIDWS.Vendor.REST.Areas.HelpPage.XmlDocumentationProvider" /> class.
+            </summary>
+            <param name="documentPath">The physical path to XML document.</param>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.Controllers.ExtendedEventController">
+            <summary>
+                Methods related to extended event units
+            </summary>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Controllers.ExtendedEventController.ExtendedEventUnits(BossIDWS.Vendor.REST.InputObjects.ExtendedEventUnitData)">
+            <summary>
+                Chapter 7.7.6 ExtendedEventUnits
+                The method shall return information about all extended event units in the vendor system. Which units
+                that are to conisdered as "extended" must be according to agreement between BossID and vendor.
+                The method shall return information about all extended event units available in the vendor system. 
+                The method will be used on a regular basis to keep BossID up to date.
+            </summary>
+            <param name="eventdata"></param>
+            <returns>Return object with extended unit information</returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Controllers.ExtendedEventController.ExtendedEvents(BossIDWS.Vendor.REST.InputObjects.ExtendedEventsData)">
+            <summary>
+                Chapter 7.8.3 ExtendedEvents
+                The method will be used to collect extended unit events for a specific installation for a specific period in time.
+            </summary>
+            <param name="parameters"></param>
+            <returns>Return object with extended unit events</returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Controllers.ExtendedEventController.ExtendedEventPoll(BossIDWS.Vendor.REST.InputObjects.ExtendedEventPollData)">
+            <summary>
+                Chapter 7.8.4 ExtendedEventPoll
+                The method will be used to poll for specific extended unit events - equal to or after the given point in time.
+            </summary>
+            <param name="parameters"></param>
+            <returns>XML with access point information</returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Controllers.AdminController.InitializeDB">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Controllers.AdminController.GetRandomHexNumber(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="digits"></param>
+            <returns></returns>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.Controllers.AccessPointController">
+            <summary>
+                Methods related to accesspoints
+            </summary>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Controllers.AccessPointController.AccessPoints(BossIDWS.Vendor.REST.InputObjects.AccessPointData)">
+            <summary>
+                Chapter 7.7.3 AccessPoints
+                Get vendor access points. The method shall return information about one single access point or all access points in the vendor system.
+                The method will be used on a regular basis to keep BossID up to date.
+            </summary>
+            <param name="accessPoint"></param>
+            <returns>Return object with access point information</returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Controllers.AccessPointController.AccessPointDetails(BossIDWS.Vendor.REST.InputObjects.AccessPointData)">
+            <summary>
+                Chapter 7.7.3 AccessPointDetails
+                The method shall return detailed information about one single access point or all access points in the vendor
+                system.
+            </summary>
+            <param name="accessPoint"></param>
+            <returns>Return object with access point detail</returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Controllers.AccessPointController.AccessPointStatus(BossIDWS.Vendor.REST.InputObjects.ClientData)">
+            <summary>
+                Chapter 7.7.5 AccessPointStatus
+                The method shall return status information about all access points in the vendor system.
+                The method is a “short form” of AccessPoint and shall return only status of each point.
+                The method will be invoked periodically, from a controlled environment, for displaying real-time access point
+                status on a map.
+            </summary>
+            <param name="clientData"></param>
+            <returns>Return object with access point status</returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Controllers.AccessPointController.AccessPointOutOfOrder(BossIDWS.Vendor.REST.InputObjects.AccessPointOutOfOrderData)">
+            <summary>
+                Chapter 7.9.2 The customer call center reports that an access point is out of order.
+                The intention of this method is to report to the vendor all discrepancies/anomalies regarding any access point
+            </summary>
+            <param name="accessPoint"></param>
+            <returns>Return object with reuslt of operation</returns>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.Controllers.CardController">
+            <summary>
+            Methods related to cards
+            </summary>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Controllers.CardController.CardNew(BossIDWS.Vendor.REST.InputObjects.CardData)">
+            <summary>
+            Chapter 7.6.1 CardNew
+            One or more new RFID cards are issued to a specific customer.
+            When the operation is complete, the customer may use all new cards on all access points assigned to the customer.
+            </summary>
+            <param name="newCard"></param>
+            <returns>Return object with result of operation</returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Controllers.CardController.CardReplace(BossIDWS.Vendor.REST.InputObjects.ReplacementCardData)">
+            <summary>
+                Chapter 7.6.2 CardReplace
+                The customer has misplaced or lost a card. A new card is issued and sent to the customer. The misplaced/lost card
+                is removed from the customer.
+                Note: In BossID, the requirement is that no card shall ever be reused. Once a card is removed/deleted, the card is
+                unavailable for future use by any customer.
+                Note: The vendor system must implement the necessary logic to keep the history of all deleted cards.
+                That is, a card is not actually “deleted” but marked as deleted/removed and unusable.
+                Operation: The card to be replaced is deactivated and removed from the customer. Adds the new card and binds it to
+                the customer.
+                When the operation is complete, the customer may use the new card on all access points assigned to the
+                customer
+            </summary>
+            <param name="cards"></param>
+            <returns>Return object with result of operation</returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Controllers.CardController.CardActivate(BossIDWS.Vendor.REST.InputObjects.CardData)">
+            <summary>
+                Chapter 7.6.4 CardActivate
+                The method activates all specified cards or all cards for a specified customer
+                The customer may use all activated card(s) for all assigned access points when the operation is complete-
+            </summary>
+            <param name="card"></param>
+            <returns>Return object with result of operation</returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Controllers.CardController.CardDeactivate(BossIDWS.Vendor.REST.InputObjects.CardData)">
+            <summary>
+                Chapter 7.6.3 CardDeactivate
+                The method shall deactivate all specified RFID cards for the specified customer.
+                The customer cannot use any of these deactivated cards on any assigned access point when the operation is complete.
+            </summary>
+            <param name="card"></param>
+            <returns>Return object with result of operation</returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Controllers.CardController.CardDelete(BossIDWS.Vendor.REST.InputObjects.CardData)">
+            <summary>
+                Chapter 7.6.5 CardDelete
+                The specified card(s) shall be deleted and removed from the specified customer.
+                Note: In BossID, the requirement is that no card shall ever be reused.Once a card is removed/deleted the card is
+                unavailable for future use by any customer.
+                Note: The vendor system must implement the necessary logic to keep the history of all deleted cards.
+                That is, a card is not actually “deleted” but marked as deleted/removed and unusable.
+                Operation: Deactivate and delete the specified card(s) for the specified customer.
+                Result: When the operation has completed, no one shall ever be able to use the specified card(s) on any access
+                point ever.
+            </summary>
+            <param name="card"></param>
+            <returns>Return object with result of operation</returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Controllers.CardController.CardList(BossIDWS.Vendor.REST.InputObjects.CurrentClientData)">
+            <summary>
+                Chapter 7.6.6 CardDelete
+                The method shall return all cards bound to a specific customer. The list shall include all active and deactivated
+                cards. In addition, the list shall include all cards that have been removed/deleted from the customer.
+            </summary>
+            <remarks>
+            Hallaien
+            </remarks>
+            <param name="client"></param>
+            <returns>Return object with list of cards</returns>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.Controllers.ClientController">
+            <summary>
+                Methods related to clients
+            </summary>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Controllers.ClientController.CustomerNew(BossIDWS.Vendor.REST.InputObjects.ClientNewData)">
+            <summary>
+                Chapter 7.5.1 CustomerNew
+                New customers are added to the vendor system using the CustomerNew method, including one or more RFID cards.
+                Typical operation: Add the customer to the vendor system, bind the RFID-card(s) to the customer, bind/allocate access points to the customer.
+                When the operation is successful, the customer will be able to use the given card(s) on all allocated access points.
+                The CustomerNew is a combined method for the deprecated CustomerNewHousehold and CustomerNewCommercial and with removal of some parameters.
+            </summary>
+            <param name="client"></param>
+            <returns>Return object with customer key in the vendor system</returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Controllers.ClientController.CustomerChangePoints(BossIDWS.Vendor.REST.InputObjects.ClientChangePointsData)">
+            <summary>
+            Chapter 7.5.8 CustomerChangePoints
+            The method will be used to change access points for a customer. A change may be: Add one or more new points,
+            replace all points, remove one or more points, remove all points
+            The accesspoint listform BossID will contain all access points that the customer will be allocated to after invokation. The vendor must thereby implement this method as a “replace all access points”.
+            Note: If all accesspoints are removed from a customer, the customer shall still exist in the vendor system with assigned RFID-cards, but with no accesspoints.
+            </summary>
+            <param name="clientdata"></param>
+            <returns>Return object with result of operation</returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Controllers.ClientController.CustomerChangeProperties(BossIDWS.Vendor.REST.InputObjects.ClientChangePropertiesData)">
+            <summary>
+                Chapter 7.5.9 CustomerChangeProperties 
+                Occasionally, there may be a change in cadastral unit, customer name, etc., where it is necessary to change the properties of a customer
+                but preserving the cards and access points associated with the customer. The vendor must implement the method, but may choose to “do nothing”. However, a name
+                change should always be performed to keep the vendor system consistent with BossID.
+            </summary>
+            <param name="clientdata"></param>
+            <returns>Return object with result of operation</returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Controllers.ClientController.CustomerNewHousehold(BossIDWS.Vendor.REST.InputObjects.HouseHoldClientData)">
+            <summary>
+                Chapter 7.5.2 CustomerNewHousehold
+                OBSOLETE - Use api/client/new instead  (CustomerNew).
+            </summary>
+            <param name="client"></param>
+            <returns>Return object with customer key in the vendor system</returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Controllers.ClientController.CustomerNewCommercial(BossIDWS.Vendor.REST.InputObjects.CommercialClientData)">
+            <summary>
+                Chapter 7.5.3 CustomerNewCommercial
+                OBSOLETE - Use api/client/new instead  (CustomerNew).
+            </summary>
+            <param name="commercialClient"></param>
+            <returns>Return object with customer key in the vendor system</returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Controllers.ClientController.CustomerMove(BossIDWS.Vendor.REST.InputObjects.MovedClientData)">
+            <summary>
+                Chapter 7.5.4 CustomerMove
+                OBSOLETE - Use api/client/changepoints (CustomerChangePoints) or api/client/changeproperties instead (CustomerChangeProperties)
+            </summary>
+            <param name="movedClient"></param>
+            <returns>Return object with result of operation</returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Controllers.ClientController.CustomerDeactivate(BossIDWS.Vendor.REST.InputObjects.CurrentClientData)">
+            <summary>
+                Chapter 7.5.5 CustomerDeactivate  
+                The service will deactivate all cards belonging to the specified customer.
+                Deactivates all cards for the specified customer such that the customer cannot use the bound cards at any access point.
+            </summary>
+            <param name="currentClient"></param>
+            <returns>Return object with result of operation</returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Controllers.ClientController.CustomerActivate(BossIDWS.Vendor.REST.InputObjects.CurrentClientData)">
+            <summary>
+                Chapter 7.5.6 CustomerActivate
+                The service activates all card bound to a specific customer.
+                Activates all cards for a customer. When the operation is complete, the customer may use all cards for all assigned access points.
+            </summary>
+            <param name="currentClient"></param>
+            <returns>Return object with result of operation</returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Controllers.ClientController.CustomerDelete(BossIDWS.Vendor.REST.InputObjects.CurrentClientData)">
+            <summary>
+                Chapter 7.5.7 CustomerDelete
+                The service “deletes” the specified customer and all bound cards.
+                Note: With delete means that both the customer and all the bound cards are marked as deleted.
+                The vendor system must implement such deletion mechanism to preserve both customer, card and event history.
+                Note: In BossID, the requirement is that no card shall ever be reused. Once a card is removed/deleted the card is
+                unavailable for future use by any customer.
+                Note: For household customers, this method will be used when e.g. an existing property is split into two or more
+                separate sections.
+                Operation Deletes all cards for a specific customer
+                Deactivates all access points for a specific customer
+                Deletes all other customer information.
+                Result: When the operation has completed, no one shall ever be able to use the cards on any access point ever.
+            </summary>
+            <param name="currentClient"></param>
+            <returns>Return object with result of operation</returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Controllers.ClientController.CustomerAccessPoints(BossIDWS.Vendor.REST.InputObjects.CurrentClientData)">
+            <summary>
+                Chapter 7.7.2 CustomerAccessPoints
+                The method shall return information and status of all access points allocated to a specific client.
+            </summary>
+            <param name="currentClient"></param>
+            <returns>Return object with customer assigned accesspoints</returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Controllers.ClientController.CustomerEvents(BossIDWS.Vendor.REST.InputObjects.CustomerEventsData)">
+            <summary>
+                Chapter 7.8.2 CustomerEvents
+                The method will be used to collect access point events for a specific customer or all customers for a specific
+                period in time.
+                Note: For a single customer query with no dates specified, the method should return the last 25 real-time
+                events, if any
+                This method will be used, on demand by BIR call center, to collect the latest access point events for a specific
+                customer.
+                Note: “All customers” option will only be used nightly to collect daily activity data.
+                Note: “All customers” option shall return a compressed XML as defined in section 7.4.7.3.
+                Note: A customer event is a successful operation, e.g. a successful waste disposal.
+                The method shall have three options:
+                * The last 25 events in real-time. Both FromDate and ToDate are empty.
+                * All events from a specific date for one customer
+                * All events from and including date to and including date for one customer or all
+                Operation: Collect access point events for a customer or all events for all customers for a specific period in
+                time.
+            </summary>
+            <param name="events"></param>
+            <returns>Return object with customer events - compressed if the customer key is set to ALL</returns>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.Data.VendorEngine">
+            <summary>
+            VendorEngine implements a dummy-vendor implementing the REST interface according to the BossID Requirement Specification
+            
+            The "dummy" code below returns valid values for a vendor using GUIDs for both customer identification, accesspoints and
+            extended event units
+            </summary>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorEngine.CustomerNew(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,BossIDWS.Vendor.REST.Data.VendorAccessPointList)">
+            <summary>
+            7.5.1
+            </summary>
+            <param name="installationid"></param>
+            <param name="customertype"></param>
+            <param name="customerid"></param>
+            <param name="customerguid"></param>
+            <param name="customername"></param>
+            <param name="streetaddress"></param>
+            <param name="description"></param>
+            <param name="rfid"></param>
+            <param name="acplist"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorEngine.CustomerNewHousehold(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            7.5.2 Deprecated
+            </summary>
+            <param name="installationid"></param>
+            <param name="customerid"></param>
+            <param name="customerguid"></param>
+            <param name="propertyunit"></param>
+            <param name="streetaddress"></param>
+            <param name="description"></param>
+            <param name="rfid"></param>
+            <param name="primary"></param>
+            <param name="secondary1"></param>
+            <param name="secondary2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorEngine.CustomerNewCommercial(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            7.5.3 Deprecated
+            </summary>
+            <param name="installationid"></param>
+            <param name="customerid"></param>
+            <param name="customerguid"></param>
+            <param name="customername"></param>
+            <param name="businessunit"></param>
+            <param name="propertyunit"></param>
+            <param name="streetaddress"></param>
+            <param name="description"></param>
+            <param name="rfid"></param>
+            <param name="inletsize"></param>
+            <param name="primary"></param>
+            <param name="secondary1"></param>
+            <param name="secondary2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorEngine.CustomerMove(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            7.5.4 Deprecated 
+            </summary>
+            <param name="installationid"></param>
+            <param name="customerkey"></param>
+            <param name="name"></param>
+            <param name="propertyunit"></param>
+            <param name="streetaddress"></param>
+            <param name="description"></param>
+            <param name="primary"></param>
+            <param name="secondary1"></param>
+            <param name="secondary2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorEngine.CustomerDeactivate(System.String,System.String)">
+            <summary>
+            7.5.5
+            </summary>
+            <param name="installationid"></param>
+            <param name="customerkey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorEngine.CustomerActivate(System.String,System.String)">
+            <summary>
+            7.5.6
+            </summary>
+            <param name="installationid"></param>
+            <param name="customerkey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorEngine.CustomerDelete(System.String,System.String)">
+            <summary>
+            7.5.7 
+            </summary>
+            <param name="installationid"></param>
+            <param name="customerkey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorEngine.CustomerChangePoints(System.String,System.String,BossIDWS.Vendor.REST.Data.VendorAccessPointList)">
+            <summary>
+            7.5.8
+            </summary>
+            <param name="installationid"></param>
+            <param name="customerkey"></param>
+            <param name="acplist"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorEngine.CustomerChangeProperties(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            7.5.9
+            </summary>
+            <param name="installationid"></param>
+            <param name="customerkey"></param>
+            <param name="customername"></param>
+            <param name="streetaddress"></param>
+            <param name="description"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorEngine.CardNew(System.String,System.String,System.String)">
+            <summary>
+            7.6.1 
+            </summary>
+            <param name="installationid"></param>
+            <param name="customerkey"></param>
+            <param name="rfid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorEngine.CardReplace(System.String,System.String,System.String,System.String)">
+            <summary>
+            7.6.2 
+            </summary>
+            <param name="installationid"></param>
+            <param name="customerkey"></param>
+            <param name="rfidnew"></param>
+            <param name="rfidreplace"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorEngine.CardDeactivate(System.String,System.String,System.String)">
+            <summary>
+            7.6.3
+            </summary>
+            <param name="installationid"></param>
+            <param name="customerkey"></param>
+            <param name="rfid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorEngine.CardActivate(System.String,System.String,System.String)">
+            <summary>
+            7.6.4 
+            </summary>
+            <param name="installationid"></param>
+            <param name="customerkey"></param>
+            <param name="rfid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorEngine.CardDelete(System.String,System.String,System.String)">
+            <summary>
+            7.6.5
+            </summary>
+            <param name="installationid"></param>
+            <param name="customerkey"></param>
+            <param name="rfid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorEngine.CardList(System.String,System.String)">
+            <summary>
+            7.6.6
+            </summary>
+            <param name="installationid"></param>
+            <param name="customerkey"></param>
+            <returns>List of customer cards</returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorEngine.CustomerAccessPoints(System.String,System.String)">
+            <summary>
+            7.7.2
+            </summary>
+            <param name="installationid"></param>
+            <param name="customerkey"></param>
+            <returns>List of customer access points</returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorEngine.AccessPoints(System.String,System.String,System.String)">
+            <summary>
+            7.7.3
+            </summary>
+            <param name="installationid"></param>
+            <param name="type"></param>
+            <param name="accesspoint"></param>
+            <returns>List of access points</returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorEngine.AccessPointDetails(System.String,System.String,System.String)">
+            <summary>
+            7.7.4
+            </summary>
+            <param name="installationid"></param>
+            <param name="type"></param>
+            <param name="accesspoint"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorEngine.AccessPointStatus(System.String)">
+            <summary>
+            7.7.5
+            </summary>
+            <param name="installationid"></param>
+            <returns>List of access point status information</returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorEngine.ExtendedEventUnits(System.String)">
+            <summary>
+            7.7.6
+            </summary>
+            <param name="installationid"></param>
+            <returns>List of extended event units</returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorEngine.CustomerEvents(System.String,System.String,System.String,System.String)">
+            <summary>
+            7.8.2
+            </summary>
+            <param name="installationid">Installasjons id</param>
+            <param name="customerkey">Kundenøkkel</param>
+            <param name="fromdate">Fra dato</param>
+            <param name="todate">Til dato</param>
+            <returns>List of customer events</returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorEngine.CustomerEventsCustomer(System.String,System.String,System.String,System.String)">
+            <summary>
+            7.8.2.CUSTOMER
+            </summary>
+            <param name="installationid"></param>
+            <param name="customerkey"></param>
+            <param name="fromdate"></param>
+            <param name="todate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorEngine.CustomerEventsDaily(System.String,System.String,System.String)">
+            <summary>
+            7.8.2.CUSTOMER.ALL
+            </summary>
+            <param name="installationid"></param>
+            <param name="fromdate"></param>
+            <param name="todate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorEngine.ExtendedEvents(System.String,System.String,System.String)">
+            <summary>
+            7.8.3
+            </summary>
+            <param name="installationid"></param>
+            <param name="fromdate"></param>
+            <param name="todate"></param>
+            <returns>Liste of extended events</returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorEngine.ExtendedEventPoll(System.String,System.String,System.String)">
+            <summary>
+            7.8.4
+            </summary>
+            <param name="installationid"></param>
+            <param name="fromdatetime"></param>
+            <param name="eventtype"></param>
+            <returns>List of polled events</returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorEngine.AccessPointOutOfOrder(System.String)">
+            <summary>
+            7.9.2
+            </summary>
+            <param name="installationid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorInterface.AddClientNew(BossIDWS.Vendor.REST.InputObjects.ClientNewData)">
+            <summary>
+            Add a new customer
+            </summary>
+            <param name="client"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorInterface.CustomerChangePoints(BossIDWS.Vendor.REST.InputObjects.ClientChangePointsData)">
+            <summary>
+            Changes customer access points
+            </summary>
+            <param name="client"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorInterface.CustomerChangeProperties(BossIDWS.Vendor.REST.InputObjects.ClientChangePropertiesData)">
+            <summary>
+            
+            </summary>
+            <param name="clientdata"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorInterface.AddNewClient(BossIDWS.Vendor.REST.InputObjects.HouseHoldClientData)">
+            <summary>
+            
+            </summary>
+            <param name="client"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorInterface.CustomerDeactivate(BossIDWS.Vendor.REST.InputObjects.CurrentClientData)">
+            <summary>
+            Dactivate a customer
+            </summary>
+            <param name="client"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorInterface.CustomerActivate(BossIDWS.Vendor.REST.InputObjects.CurrentClientData)">
+            <summary>
+            No current supported functionality in Sesam
+            </summary>
+            <param name="client"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorInterface.CustomerDelete(BossIDWS.Vendor.REST.InputObjects.CurrentClientData)">
+            <summary>
+            Delete a customer
+            </summary>
+            <param name="client"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorInterface.CardReplace(BossIDWS.Vendor.REST.InputObjects.ReplacementCardData)">
+            <summary>
+            
+            </summary>
+            <param name="cards"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorInterface.CardActivate(BossIDWS.Vendor.REST.InputObjects.CardData)">
+            <summary>
+            Activate one or more cards
+            </summary>
+            <param name="cards"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorInterface.CardDeactivate(BossIDWS.Vendor.REST.InputObjects.CardData)">
+            <summary>
+            Deactivate one or more cards
+            </summary>
+            <param name="cards"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorInterface.CardDelete(BossIDWS.Vendor.REST.InputObjects.CardData)">
+            <summary>
+            
+            </summary>
+            <param name="cards"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorInterface.CardList(BossIDWS.Vendor.REST.InputObjects.CurrentClientData)">
+            <summary>
+            
+            </summary>
+            <param name="client"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorInterface.CustomerAccessPoints(BossIDWS.Vendor.REST.InputObjects.CurrentClientData)">
+            <summary>
+            
+            </summary>
+            <param name="client"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorInterface.AccessPoints(BossIDWS.Vendor.REST.InputObjects.AccessPointData)">
+            <summary>
+            For this one Sesam returns an XML that is transfomed to the REST accesspoint object
+            </summary>
+            <param name="accesspointdata"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorInterface.AccessPointDetails(BossIDWS.Vendor.REST.InputObjects.AccessPointData)">
+            <summary>
+            Not supported
+            </summary>
+            <param name="accesspointdata"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorInterface.AccessPointStatus(BossIDWS.Vendor.REST.InputObjects.ClientData)">
+            <summary>
+            Get status of all Sesam access points (all root inlets) and tranform the status list to the REST equivalent
+            </summary>
+            <param name="installation"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorInterface.GetExtendedEventUnits(BossIDWS.Vendor.REST.InputObjects.ClientData)">
+            <summary>
+            Return extended event units form Sesam and transform result to to the REST eqivalent
+            </summary>
+            <param name="installation"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorInterface.CustomerEvents(BossIDWS.Vendor.REST.InputObjects.CustomerEventsData)">
+            <summary>
+            Return customer events from Sesam. Her we return "any" object to be able to support two kinds of access point list, either the normal list
+            or the compressed one for "ALL".
+            </summary>
+            <param name="events"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorInterface.GetExtendedEvents(BossIDWS.Vendor.REST.InputObjects.ExtendedEventsData)">
+            <summary>
+            Get extended events from Sesam and transform the Sesam events to the REST equivalent
+            </summary>
+            <param name="events"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorInterface.GetExtendedEventPoll(BossIDWS.Vendor.REST.InputObjects.ExtendedEventPollData)">
+            <summary>
+            Poll Sesam for specific events and transform the Sesam events to the REST equivalent
+            </summary>
+            <param name="polldata"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorInterface.TransformToExtendedEventUnitList(System.String,System.Collections.Generic.List{BossIDWS.Vendor.REST.Data.VendorExtendedUnit})">
+            <summary>
+            Convert list of extended units fetched from Sesam to object to be returned by REST
+            </summary>
+            <param name="installationid"></param>
+            <param name="units"></param>
+            <returns></returns>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.Data.VendorException.ReturObjekt">
+            <summary>
+            GET - Returobjekt basert på unntaket. Hvis InnerException tas denne med som ToString()
+            </summary>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorException.#ctor">
+            <summary>
+            Standard constructor - Sett standard systemfeil-melding
+            </summary>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorException.#ctor(System.String)">
+            <summary>
+            Constructor med returmelding - feilkode blir 1024
+            </summary>
+            <param name="returmelding">Returmelding</param>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorException.#ctor(System.String,System.Exception)">
+            <summary>
+            Constructor med returmelding og inner Exception - feilkode blir 1024
+            </summary>
+            <param name="returmelding"></param>
+            <param name="inner"></param>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorException.#ctor(System.Int32,System.String)">
+            <summary>
+            Constructor med returkode og returmelding 
+            </summary>
+            <param name="returkode"></param>
+            <param name="returmelding"></param>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorException.#ctor(System.Int32,System.String,System.Exception)">
+            <summary>
+            Constructor med returkode, returmelding og InnerException
+            </summary>
+            <param name="returkode"></param>
+            <param name="returmelding"></param>
+            <param name="inner"></param>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorRO.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorRO.#ctor(System.Int32,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="code"></param>
+            <param name="Message"></param>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorRO.#ctor(System.Int32,System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="code"></param>
+            <param name="Message"></param>
+            <param name="ReturnValue"></param>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorRO.#ctor(System.String)">
+            <summary>
+            </summary>
+            <param name="ReturnValue">ReturnValue</param>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorRO.#ctor(BossIDWS.Vendor.REST.Data.VendorRO,BossIDWS.Vendor.REST.Data.VendorRO)">
+            <summary>
+            
+            </summary>
+            <param name="ro1"></param>
+            <param name="ro2"></param>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorRO.Clone(BossIDWS.Vendor.REST.Data.VendorRO)">
+            <summary>
+            
+            </summary>
+            <param name="ro"></param>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorRO.Clone(BossIDWS.Vendor.REST.Data.VendorRO,BossIDWS.Vendor.REST.Data.VendorRO)">
+            <summary>
+            
+            </summary>
+            <param name="ro1"></param>
+            <param name="ro2"></param>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorRO.ToArray">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.Data.VendorDL">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Data.VendorDL.AddClientNew(BossIDWS.Vendor.REST.InputObjects.ClientNewData)">
+            <summary>
+            
+            </summary>
+            <param name="client"></param>
+            <returns></returns>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.Constants">
+            <summary>
+            </summary>
+        </member>
+        <member name="F:BossIDWS.Vendor.REST.Constants.NotApplicableReturnValue">
+            <summary>
+            </summary>
+        </member>
+        <member name="F:BossIDWS.Vendor.REST.Constants.NotImplementedMessage">
+            <summary>
+            </summary>
+        </member>
+        <member name="F:BossIDWS.Vendor.REST.Constants.NotImplementedReturnCode">
+            <summary>
+            </summary>
+        </member>
+        <member name="F:BossIDWS.Vendor.REST.Constants.OkReturnCode">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.Filters.APIKeyHandler">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Filters.APIKeyHandler.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Filters.APIKeyHandler.SendAsync(System.Net.Http.HttpRequestMessage,System.Threading.CancellationToken)">
+            <summary>
+            
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.InputObjects.AccessPointData">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.InputObjects.AccessPointData.AccessPointType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:BossIDWS.Vendor.REST.InputObjects.AccessPointData.AccessPointType.ID">
+            <summary>
+            Access point ID in the vendor system
+            </summary>
+        </member>
+        <member name="F:BossIDWS.Vendor.REST.InputObjects.AccessPointData.AccessPointType.TAG">
+            <summary>
+            The tag of the access point
+            </summary>
+        </member>
+        <member name="F:BossIDWS.Vendor.REST.InputObjects.AccessPointData.AccessPointType.NAME">
+            <summary>
+            Name or address of access point
+            </summary>
+        </member>
+        <member name="F:BossIDWS.Vendor.REST.InputObjects.AccessPointData.AccessPointType.ALL">
+            <summary>
+            All access points. The AccessPoint parameter is empty
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.InputObjects.AccessPointData.Type">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.InputObjects.AccessPointData.AccessPoint">
+            <summary>
+            Value according to AccessPointType
+            </summary>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.InputObjects.AccessPointOutOfOrderData">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.InputObjects.AccessPointOutOfOrderData.Message">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.InputObjects.AccessPointCustomer">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.InputObjects.AccessPointCustomer.accesspointid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.InputObjects.AccessPointCustomer.size">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.InputObjects.AccessPointCustomer.role">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.InputObjects.AccessPointListCustomer">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.InputObjects.AccessPointListCustomer.AccessPoint">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.InputObjects.CardData">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.InputObjects.CardData.CustomerKey">
+            <summary>
+            Customer key/id in the vendor system
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.InputObjects.CardData.RFID">
+            <summary>
+            RFID card(s). Semicolon separated list. At least one RFID must be accepted.
+            </summary>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.InputObjects.ClientObsolete">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.InputObjects.ClientObsolete.InstallationID">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.InputObjects.ClientChangePointsData">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.InputObjects.ClientChangePointsData.CustomerKey">
+            <summary>
+            The customer key/id in the vendor system
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.InputObjects.ClientChangePointsData.AccessPoints">
+            <summary>
+            Either an XML with access points to be allocated to the customer, HTML encoded, or a list semicolon separated list of access points
+            Using a semicolon separated list may only be in collaboration with BossID and where the vendor only supports primary inlets.
+            
+            The parameter will contain all access points that the customer will be allocated to after invokation. The vendor must thereby implement this method as a “replace all access points”.
+            </summary>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.InputObjects.ClientChangePropertiesData">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.InputObjects.ClientChangePropertiesData.Customerkey">
+            <summary>
+            The customer key/id in the vendor system
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.InputObjects.ClientChangePropertiesData.Customername">
+            <summary>
+            Customer name. EMPTY if no change
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.InputObjects.ClientChangePropertiesData.Streetaddress">
+            <summary>
+            Street name and number. EMPTY if no change
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.InputObjects.ClientChangePropertiesData.Description">
+            <summary>
+            Additional information about the customer. EMPTY if no change
+            </summary>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.InputObjects.ClientData">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.InputObjects.ClientData.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.InputObjects.ClientData.InstallationID">
+            <summary>
+            If no InstallationID is to be used, the argument will be set by caller to the value NA
+            </summary>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.InputObjects.ClientNewData">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.InputObjects.ClientNewData.CustomerType">
+            <summary>
+            Required - Valid values are H=Household, C=Commercial
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.InputObjects.ClientNewData.CustomerID">
+            <summary>
+            Required - The CRM Customer ID
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.InputObjects.ClientNewData.CustomerGUID">
+            <summary>
+            Optional - The CRM Customer GUID
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.InputObjects.ClientNewData.CustomerName">
+            <summary>
+            Required - The BossID Property Unit for household customers or company name for commercial customers
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.InputObjects.ClientNewData.StreetAddress">
+            <summary>
+            Optional - For reference only. Street name and number for household customers, otherwise “NA”. May be used for organizing household customers in the vendor system
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.InputObjects.ClientNewData.Description">
+            <summary>
+            Optional - Additional information about the customer. For reference only
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.InputObjects.ClientNewData.RFID">
+            <summary>
+            Required - RFID cards. Semicolon separated list. Each RFID will be a valid RFID interpretation as required by the vendor system.
+            At least one card will be specified.
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.InputObjects.ClientNewData.AccessPoints">
+            <summary>
+            Required - Either an XML with access points to be allocated to the customer, HTML encoded, or a list semicolon separated list of access points
+            
+            Using a semicolon separated list may only be in collaboration with BossID and where the vendor only supports primary inlets.
+            </summary>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.InputObjects.CommercialClientData">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.InputObjects.CommercialClientData.Name">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.InputObjects.CommercialClientData.Businessunit">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.InputObjects.CommercialClientData.InletSize">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.InputObjects.CurrentClientData">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.InputObjects.CurrentClientData.CustomerKey">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.InputObjects.CustomerEventsData">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.InputObjects.CustomerEventsData.CustomerKey">
+            <summary>
+            The customer key/id in the vendor system
+            If “ALL”, the method shall return activity for all customers for the specified period
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.InputObjects.CustomerEventsData.FromDate">
+            <summary>
+            From date in iso format: YYYY-MM-DD.
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.InputObjects.CustomerEventsData.ToDate">
+            <summary>
+            To date in iso format: YYYY-MM-DD.
+            </summary>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.InputObjects.EventsData">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.InputObjects.EventsData.Customerkey">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.InputObjects.EventsData.FromDate">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.InputObjects.EventsData.ToDate">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.InputObjects.ExtendedEventPollData">
+            <summary>
+            2018.04.13 - TJM - Added for V43
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.InputObjects.ExtendedEventPollData.FromDateTime">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.InputObjects.ExtendedEventPollData.EventType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.InputObjects.ExtendedEventsData">
+            <summary>
+            2018.04.13 - TJM - Added for V43
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.InputObjects.ExtendedEventsData.FromDate">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.InputObjects.ExtendedEventsData.ToDate">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.InputObjects.ExtendedEventUnitData">
+            <summary>
+            2018.04.13 - TJM - Added for V43
+            </summary>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.InputObjects.HouseHoldClientData">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.InputObjects.HouseHoldClientData.Customerid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.InputObjects.HouseHoldClientData.Customerguid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.InputObjects.HouseHoldClientData.Propertyunit">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.InputObjects.HouseHoldClientData.Streetaddress">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.InputObjects.HouseHoldClientData.Description">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.InputObjects.HouseHoldClientData.RFID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.InputObjects.HouseHoldClientData.Primary">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.InputObjects.HouseHoldClientData.Secondary1">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.InputObjects.HouseHoldClientData.Secondary2">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.InputObjects.MovedClientData">
+            <summary>
+            2018.04.13 - TJM - Added for V43 - from GitHub
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.InputObjects.MovedClientData.Name">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.InputObjects.MovedClientData.PropertyUnit">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.InputObjects.MovedClientData.StreetAddress">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.InputObjects.MovedClientData.Description">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.InputObjects.MovedClientData.Primary">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.InputObjects.MovedClientData.Secondary1">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.InputObjects.MovedClientData.Secondary2">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.InputObjects.ReplacementCardData">
+            <summary>
+            Naming is exactly equal to the nameing in the BossID REST interface
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.InputObjects.ReplacementCardData.CustomerKey">
+            <summary>
+            Customer key/id in the vendor system
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.InputObjects.ReplacementCardData.ReplacementRFID">
+            <summary>
+            RFID cards that are to be replaced, semicolon separated
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.InputObjects.ReplacementCardData.RFID">
+            <summary>
+            New RFID cards, semicolon separated
+            </summary>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.ReturnObjects.AccessPoint">
+            <summary>
+            List of accesspoints
+            2018.04.13 - TJM - Updated for V43 - from GitHub
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.AccessPoint.installationid">
+            <summary>
+            The installation ID. Set to “NA” if not appropriate.
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.AccessPoint.accesspointid">
+            <summary>
+            Access point id in vendor system
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.AccessPoint.parentid">
+            <summary>
+            The id of the parent access point in an access point hierarchy. Empty if no parent.
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.AccessPoint.category">
+            <summary>
+            The type of this point (category)
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.AccessPoint.size">
+            <summary>
+            When customer request – the actual size allocated to the customer. When synchronization – The actual size types may be allocated to a customer.
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.AccessPoint.capacity">
+            <summary>
+            Estimated household usage where appropriate. For synchronization only
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.AccessPoint.name">
+            <summary>
+            The name of the access point
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.AccessPoint.tag">
+            <summary>
+            The «tag» belonging to the access point
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.AccessPoint.description">
+            <summary>
+            A description of the point, if any
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.AccessPoint.role">
+            <summary>
+            The role or type of this access point. PR=Primary inlet, S1 = First alternative inlet or S2 = Secondary alternative inlet.
+            The role shall have a value of «NA» if the access point list is not associated with a customer related request
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.AccessPoint.wpn">
+            <summary>
+            Waste product number in vendor system
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.AccessPoint.unit">
+            <summary>
+            Measurement unit for the point. For synchronization only
+            </summary>
+            
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.AccessPoint.gps">
+            <summary>
+            GPS position of point, e.g. “6025.532N00518.864E”
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.AccessPoint.decimaldegrees">
+            <summary>
+            The gps position in decimal degrees, e.g. “60.3890;5.3187”. Note: Maximum eigth decimals
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.AccessPoint.zone">
+            <summary>
+            UTM zone. UTM zone may be empty if zone 32V. Otherwise the zone must be specified
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.AccessPoint.x">
+            <summary>
+            UTM x-value
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.AccessPoint.y">
+            <summary>
+            UTM y-value
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.AccessPoint.state">
+            <summary>
+            State of this point, A=Available, W=Warning, U=Unavailable. When synchronizing D=Point is deleted
+            </summary>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.ReturnObjects.AccessPointList">
+            <summary>
+            List of access points
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.AccessPointList.AccessPoints">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.ReturnObjects.AccessPointDetail">
+            <summary>
+            2018.04.13 - TJM - Updated for V43 - from GitHub
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.AccessPointDetail.installationid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.AccessPointDetail.accesspointid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.AccessPointDetail.accesspointguid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.AccessPointDetail.pointtype">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.AccessPointDetail.filllevel">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.AccessPointDetail.batterylevel">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.AccessPointDetail.temperature">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.AccessPointDetail.batterytype">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.AccessPointDetail.voltage">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.AccessPointDetail.volume">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.AccessPointDetail.weight">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.AccessPointDetail.length">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.AccessPointDetail.width">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.AccessPointDetail.height">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.AccessPointDetail.serial">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.AccessPointDetail.tag">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.AccessPointDetail.barcode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.AccessPointDetail.warning">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.AccessPointDetail.error">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.AccessPointDetail.pictureurl">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.AccessPointDetail.cameraurl">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.ReturnObjects.AccessPointDetailList">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.AccessPointDetailList.AccessPoints">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.ReturnObjects.AccessPointStatus">
+            <summary>
+            Status of accesspoint
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.AccessPointStatus.installationid">
+            <summary>
+            The installation ID
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.AccessPointStatus.accesspointid">
+            <summary>
+            Access point id in vendor system
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.AccessPointStatus.state">
+            <summary>
+            State of this point, A=Available, W=Warning, U=Unavailable
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.AccessPointStatus.statuscode">
+            <summary>
+            An integer identifying the actual status - an error or warning code. Value of zero shall always indicate that a point is fully operable. Any other values will be vendor specific and will be used as reference.
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.AccessPointStatus.statustext">
+            <summary>
+            A text or message following the status code. Only when status code other than zero.
+            </summary>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.ReturnObjects.AccessPointStatusList">
+            <summary>
+            List of access point status
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.AccessPointStatusList.AccessPoints">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.ReturnObjects.BossIDCustomer">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.BossIDCustomer.installationid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.BossIDCustomer.customerkey">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.BossIDCustomer.AccessPoints">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.ReturnObjects.Card">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.Card.rfid">
+            <summary>
+            The RFID of this card
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.Card.status">
+            <summary>
+            Card status. A=The card is active, B=The card is blocked, D=The card is deleted
+            </summary>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.ReturnObjects.CardList">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.CardList.Cards">
+            <summary>
+            List of cards
+            </summary>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.ReturnObjects.Client">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.Client.installationid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.Client.customerkey">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.Client.AccessPoints">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.ReturnObjects.CompressedEvent">
+            <summary>
+            Compressed list of client events
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.CompressedEvent.t">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.CompressedEvent.vi">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.CompressedEvent.i">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.CompressedEvent.et">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.CompressedEvent.c">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.CompressedEvent.a">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.CompressedEvent.s">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.CompressedEvent.r">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.CompressedEvent.w">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.CompressedEvent.u">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.CompressedEvent.v">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.ReturnObjects.CompressedEventList">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.ReturnObjects.ExtendedEvent">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.ExtendedEvent.timestamp">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.ExtendedEvent.vendorid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.ExtendedEvent.installationid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.ExtendedEvent.unitid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.ExtendedEvent.idtype">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.ExtendedEvent.eventtype">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.ExtendedEvent.wpn">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.ReturnObjects.ExtendedEventList">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.ExtendedEventList.EventList">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.ReturnObjects.CustomerEvent">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.CustomerEvent.timestamp">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.CustomerEvent.vendorid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.CustomerEvent.installationid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.CustomerEvent.eventtype">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.CustomerEvent.customerkey">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.CustomerEvent.accesspointid">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.CustomerEvent.size">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.CustomerEvent.rfid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.CustomerEvent.wpn">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.CustomerEvent.unit">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.CustomerEvent.value">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.ReturnObjects.CustomerEventList">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.CustomerEventList.EventList">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.ReturnObjects.ExtendedEventUnit">
+            <summary>
+            List of extended units
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.ExtendedEventUnit.vendorid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.ExtendedEventUnit.installationid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.ExtendedEventUnit.unitid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.ExtendedEventUnit.category">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.ExtendedEventUnit.isaccesspoint">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.ExtendedEventUnit.name">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.ExtendedEventUnit.description">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.ExtendedEventUnit.tag">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.ExtendedEventUnit.rfid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.ExtendedEventUnit.wpn">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.ExtendedEventUnit.status">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.ReturnObjects.ExtendedEventUnitList">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.ExtendedEventUnitList.ExtendedUnitList">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.ReturnObjects.RO`1">
+            <summary>
+             Return object of T
+            </summary>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.ReturnObjects.RO`1.#ctor(System.Int32,System.String,`0)">
+            <summary>
+                RO
+            </summary>
+            <param name="returnCode"></param>
+            <param name="message"></param>
+            <param name="returnValue"></param>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.ReturnObjects.RO`1.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.RO`1.ReturnCode">
+            <summary>
+                ReturnCode
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.RO`1.Message">
+            <summary>
+                Message
+            </summary>
+        </member>
+        <member name="P:BossIDWS.Vendor.REST.ReturnObjects.RO`1.ReturnValue">
+            <summary>
+                ReturnValue
+            </summary>
+        </member>
+        <member name="T:BossIDWS.Vendor.REST.Utils">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Utils.#cctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Utils.GetAppSettingUsingConfigurationManager(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="settingName"></param>
+            <returns></returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Utils.ApplySettings(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Utils.GetSetting(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="key"></param>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Utils.WriteToLog(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="text"></param>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Utils.RequestRestData``1(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="serviceUrl"></param>
+            <param name="url"></param>
+            <param name="data"></param>
+            <param name="method"></param>
+            <param name="apikey"></param>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Utils.SerializeObjectToXml``1(``0)">
+            <summary>
+            
+            </summary>
+            <param name="value"></param>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Utils.GetRandomHexString">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BossIDWS.Vendor.REST.Utils.GetRandomNumber(System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="floor"></param>
+            <param name="ceiling"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
